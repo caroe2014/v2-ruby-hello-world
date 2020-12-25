@@ -1,0 +1,72 @@
+[
+  {
+    "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+    "value": "c51b341e-9351-4a93-ad6c-f4fac6725d58",
+    "slotSetting": false
+  },
+  {
+    "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+    "value": "InstrumentationKey=c51b341e-9351-4a93-ad6c-f4fac6725d58;IngestionEndpoint=https://canadacentral-0.in.applicationinsights.azure.com/",
+    "slotSetting": false
+  },
+  {
+    "name": "DASHBOARD_APP_URL",
+    "value": "stemispmmdev.z9.web.core.windows.net",
+    "slotSetting": false
+  },
+  {
+    "name": "DB_HOST",
+    "value": "@Microsoft.KeyVault(SecretUri=https://kv-emis-dev.vault.azure.net/secrets/Assessments-DB-Host/368df9b5696e4f80b6d3678237253938)",
+    "slotSetting": false
+  },
+  {
+    "name": "DB_PASSWORD",
+    "value": "@Microsoft.KeyVault(SecretUri=https://kv-emis-dev.vault.azure.net/secrets/Assessments-DB-Password/74bae2387b404215a46dc02c8bf07768)",
+    "slotSetting": false
+  },
+  {
+    "name": "DB_USER",
+    "value": "@Microsoft.KeyVault(SecretUri=https://kv-emis-dev.vault.azure.net/secrets/Assessments-DB-User/a4923faa75c54d178a5e3d0e9eefc6e2)",
+    "slotSetting": false
+  },
+  {
+    "name": "PORT",
+    "value": "8080",
+    "slotSetting": false
+  },
+  {
+    "name": "RAILS_ENV",
+    "value": "development",
+    "slotSetting": false
+  },
+  {
+    "name": "RAILS_SERVE_STATIC_FILES",
+    "value": "true",
+    "slotSetting": false
+  },
+  {
+    "name": "SCM_COMMAND_IDLE_TIMEOUT",
+    "value": "1800",
+    "slotSetting": false
+  },
+  {
+    "name": "SURVEY_APP_URL",
+    "value": "stemissurveydev.z9.web.core.windows.net",
+    "slotSetting": false
+  },
+  {
+    "name": "WEBSITE_HTTPLOGGING_RETENTION_DAYS",
+    "value": "7",
+    "slotSetting": false
+  },
+  {
+    "name": "WEBSITE_RUN_FROM_PACKAGE",
+    "value": "1",
+    "slotSetting": false
+  },
+  {
+    "name": "WEBSITES_CONTAINER_START_TIME_LIMIT",
+    "value": "1800",
+    "slotSetting": false
+  }
+]

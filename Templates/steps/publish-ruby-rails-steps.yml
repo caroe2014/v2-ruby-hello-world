@@ -1,0 +1,40 @@
+parameters:
+  - name: package 
+    displayName: "Path to project folder"
+    type: string 
+    default: 'app-service'
+
+# steps:
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(Pipeline.Workspace)/dist/'
+#     includeRootFolder: false
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/$(package).zip'
+#     replaceExistingArchive: true
+#     verbose: true
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(package).zip'
+#     ArtifactName: 'services-superadmin'
+#     publishLocation: 'Container'
+#   displayName: 'Publish artifacts'
+#   condition: succeededOrFailed()
+
+steps:
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Pipeline.Workspace)/dist/'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    verbose: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
+  condition: succeededOrFailed()
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    publishLocation: 'Container'
