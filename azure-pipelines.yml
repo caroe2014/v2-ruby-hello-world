@@ -16,12 +16,6 @@ variables:
 
 name: $(Major).$(Minor).$(Patch).$(Rev:r)
 
-resources:
-  repositories:
-  - repository: caroe2014
-    name: 'Templates'
-    type: git
-
 stages:
 - template: stages/deploy-ruby-app-service-stages.yml@Templates
   parameters:
