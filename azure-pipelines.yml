@@ -1,0 +1,33 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-20.04'
+
+variables:
+- group: Version
+- group: Build-Defaults
+- name: appName
+  value: 'v-edcaroRubyonRails'
+- name: package
+  value: 'WebAPI'
+- name: projectPath
+  value: 'v2-ruby-hello-world/'
+
+name: $(Major).$(Minor).$(Patch).$(Rev:r)
+
+resources:
+  repositories:
+  - repository: Templates
+    name: 'devops-templates'
+    type: git
+    ref: 'feature/assessment'
+
+stages:
+- template: stages/deploy-ruby-app-service-stages.yml@Templates
+  parameters:
+      buildConfiguration: $(BuildConfiguration)
+      azureSubscription: $(AzureSubscription)
+      projectPath: $(projectPath)
+      appName: $(appName)
+      package: $(package)
