@@ -18,8 +18,8 @@ name: $(Major).$(Minor).$(Patch).$(Rev:r)
 
 resources:
   repositories:
-  - repository: Templates
-    name: 'devops-templates'
+  - repository: caroe2014
+    name: 'Templates'
     type: git
     ref: 'feature/assessment'
 
