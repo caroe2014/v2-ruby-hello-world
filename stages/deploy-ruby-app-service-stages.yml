@@ -2,7 +2,7 @@ parameters:
   buildConfiguration: 'Release'
   azureSubscription: ''
   projectPath: '/'
-  appName: 'app-api'
+  appName: 'v-edcaroRubyonRails'
   package: 'app-service'
 
 stages:

@@ -1,0 +1,19 @@
+parameters:
+  buildConfiguration: 'Release'
+  projectPath: '/'
+  package: 'app-service'
+  
+stages:
+- stage: 'Build'
+  jobs:
+  - job: 'Build'
+    steps:
+    - template: '../steps/build-ruby-rails-steps.yml'
+      parameters:
+        buildConfiguration: ${{ parameters.buildConfiguration }}
+        projectPath: ${{ parameters.projectPath }}
+
+    - template: '../steps/publish-ruby-rails-steps.yml'
+      parameters:
+        package: ${{ parameters.package }}
+        
