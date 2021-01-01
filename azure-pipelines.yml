@@ -1,23 +1,33 @@
-# Ruby
-# Package your Ruby project.
-# Add steps that install rails, analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/ruby
-
 trigger:
-- main
+- master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-20.04'
 
-steps:
-- task: UseRubyVersion@0
-  inputs:
-    versionSpec: '= 2.6.6'
+variables:
+- group: Version
+- group: Build-Defaults
+- name: appName
+  value: 'v-edcaroRubyonRails'
+- name: package
+  value: 'WebAPI'
+- name: projectPath
+  value: 'v2-ruby-hello-world/'
 
-- script: |
-    gem install bundler
-    bundle install --retry=3 --jobs=4
-  displayName: 'bundle install'
+name: $(Major).$(Minor).$(Patch).$(Rev:r)
 
-- script: bundle exec rake
-  displayName: 'bundle exec rake'
+resources:
+  repositories:
+  - repository: Templates
+    name: 'devops-templates'
+    type: git
+    ref: 'feature/assessment'
+
+stages:
+- template: stages/deploy-ruby-app-service-stages.yml@Templates
+  parameters:
+      buildConfiguration: $(BuildConfiguration)
+      azureSubscription: $(AzureSubscription)
+      projectPath: $(projectPath)
+      appName: $(appName)
+      package: $(package)
