@@ -17,8 +17,7 @@ variables:
 name: $(Major).$(Minor).$(Patch).$(Rev:r)
 
 stages:
-- template: stages/deploy-ruby-app-service-stages.yml@caroe2014
-  parameters:
+- template: stages/deploy-ruby-app-service-stages.yml
       buildConfiguration: $(BuildConfiguration)
       azureSubscription: $(AzureSubscription)
       projectPath: $(projectPath)
