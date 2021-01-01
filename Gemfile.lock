@@ -632,7 +632,7 @@ DEPENDENCIES
   zoom_rb
 
 RUBY VERSION
-   ruby 2.6.2
+   ruby 2.6.6
 
 BUNDLED WITH
    1.17.2
