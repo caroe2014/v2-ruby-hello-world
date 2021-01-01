@@ -1,0 +1,51 @@
+parameters:  
+  - name: buildConfiguration 
+    displayName: "Build Configuration"
+    type: string 
+    default: 'Release'
+  - name: projectPath 
+    displayName: "Path to project folder"
+    type: string 
+    default: '/'
+
+steps:
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '~= 2.6'
+    addToPath: true
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: ${{ parameters.projectPath }}
+    Contents: 'Gemfile*'
+    TargetFolder: '$(Pipeline.Workspace)/dist/'
+
+- script: |
+    gem install bundler -v 1.17.2
+    bundle update --ruby
+    bundle package
+    bundle install --local --retry=3 --jobs=4
+  workingDirectory: '$(Pipeline.Workspace)/dist/'
+  displayName: 'bundle install'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: ${{ parameters.projectPath }}
+    Contents: |
+      **/*
+      !.ruby-version
+      !public/BLD
+    TargetFolder: '$(Pipeline.Workspace)/dist/'
+
+- script: bundle exec rake assets:precompile
+  workingDirectory: '$(Pipeline.Workspace)/dist/'
+  displayName: 'bundle exec rake assets:precompile'
+
+- task: DeleteFiles@1
+  inputs:
+    SourceFolder: '$(Pipeline.Workspace)/dist/'
+    Contents: |
+      tmp
+      spec
+      tests
+      node_modules
