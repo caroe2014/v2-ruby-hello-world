@@ -21,7 +21,6 @@ resources:
   - repository: caroe2014
     name: 'Templates'
     type: git
-    ref: 
 
 stages:
 - template: stages/deploy-ruby-app-service-stages.yml@Templates
